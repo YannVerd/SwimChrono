@@ -1,0 +1,218 @@
+/* Variables and include */
+@font-face {
+	font-family: 'Lato';
+	src: url(‘/fonts/Lato/Lato.ttf’) format(‘truetype’)
+} 
+
+:root{
+    --topBotColor:rgba(20, 115, 216, 1);
+    --mainColor: rgba(21, 157, 236, 0.553);
+    --navColor: rgba(16, 188, 231, 0.5);
+}
+
+/* responsive */
+@media screen and (max-width: 400px){
+    #swimmers{
+        width: 350px;
+    }
+    #footer_links{
+        width: 100%;
+    }
+}
+
+/* General managment */
+
+*{
+    margin: 0;
+}
+
+html{
+    height: 100%;
+}
+
+/* Top */
+
+header{
+    background-color: var(--topBotColor);
+    position: sticky;
+    top: 0;
+    z-index: 150;
+}
+
+nav{
+    display: flex;
+    justify-content:space-around;
+    background-color: var(--navColor);
+    /* border: solid var(--topBotColor) 2px; */
+    height: 2em;
+}
+
+.icon_nav{
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0.5rem;
+    
+    
+}
+
+.icon_nav:hover{
+    width: 1.6rem;
+    height: 1.9rem;
+    position: relative;
+    left: -0.75rem;
+    top: -0.50rem;
+    padding:0 1rem 0.20rem 1rem;
+    background-color: var(--topBotColor);
+    border-radius: 100% 100% 0 0;
+    box-shadow: -0.70em -1em 1em 0 cyan;
+    cursor:pointer;
+    
+    
+}
+
+/* 'h' 'li' management */
+h1, h2, h3{
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    padding-top: 5px;
+    
+}
+
+h1{
+    padding: 1.rem 0 1.5rem 0
+}
+
+h2{
+    padding-top: 1.1em;
+}
+
+p{
+    padding: 10px;
+}
+
+h3, li{
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+  }
+
+/* Middle of the page */
+
+main{
+   /* background-color: var(--mainColor);  */
+   background: linear-gradient(var(--mainColor), var(--navColor));
+}
+
+#presentation{
+    text-align: center;
+}
+
+hr{
+    width: 50%;
+    margin: auto;
+    height: 1px;
+    background-color: black;
+    margin-top: 2.5rem;
+}
+
+#description{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+}
+#description div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#description p{
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    width: 60%;
+    margin: auto;
+}
+
+#swimmers{
+    scale: 65%;
+    z-index: 100;
+}
+
+/* form managment */
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    margin-top: 10px;
+}
+
+#group_pnm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#div_msg{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+}
+#div_sub{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: darkblue;
+}
+
+#group_pnm label{
+    padding-left: 5px;
+}
+
+/*Bottom*/
+
+footer{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: var(--topBotColor);
+    margin-top: 0;
+    position: sticky;
+    bottom: 0;
+    z-index: 150;
+}
+
+#footer_links{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+
+#footer_icons, #footer_social{
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem;
+}   
+
+#footer_links a{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.icon{
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+}

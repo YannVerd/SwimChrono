@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./Styles/style.css" rel="stylesheet">
+    <title>Swim'Chronos</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#"><img class="icon_nav" src="./icons/house-solid.svg" title="home"/></a>
+            <a href="./Content/chrono.html"><img class="icon_nav" src="./icons/stopwatch-solid.svg" title="Chronos"/></a>
+            <a href="#"><img class="icon_nav" src="./icons/calendar-days-regular.svg" title="Agenda"/></a>
+            <a href="#infos"><img class="icon_nav" src="./icons/envelope-solid.svg" title="Nous contacter"/></a>
+            <a href="#"><img class="icon_nav" src="./icons/database-solid.svg" title="Gestion Athlètes"/></a>
+            <a href="#"><img class="icon_nav" src="./icons/user-solid.svg" title="Login"/></a>
+        </nav>
+        <h1>Swim'Chronos</h1>  
+    </header>
+    
+    <!-- <?php include("./Content/header.php")?> -->
+
+    <main>
+        <section id="presentation">
+            <h2> Bienvenue sur Swim'Chrono</h2> 
+            <p> La première application qui vous permet de gérer les temps, les intervalles et la progression de vos athlètes.<br/>
+                Et tout ça en temps réel</p>
+
+            <hr />
+        </section>
+        <section id="description">
+            <div>
+                <h3>Toutes les fonctionnalités à venir</h3>
+                <ul>
+                    <li>Chronomètre avec temps partiels</li>
+                    <li>Agenda</li>
+                    <li>Suivi par athlète personnalisable</li>
+                    <li>Gestion des temps</li>
+                    <li>Visuel sur la progression</li>
+                </ul>
+            </div>
+            <img id="swimmers" src="./backgrounds/nageurs.jpg" alt="swimmers"/>
+        </section>
+
+        <hr />
+
+        <section id="infos">
+            <h3>Nous contacter pour plus d'informations</h3>
+            <form>
+                <div id="group_pnm">
+                    <div class="prenom">
+                        <label for="prenom">Votre prénom :</label>
+                        <input type="text" name="prenom" id="prenom" required>
+                    </div>
+                    <div class="nom">
+                        <label for="nom">Votre nom :</label>
+                        <input type="text" name="nom" id="nom" required>
+                    </div>
+                    <div class="email">
+                        <label for="email">Votre e-mail :</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                </div>
+                <div id="div_msg    ">
+                    <label for="msg">Votre message :</label>
+                    <textarea name="msg" id="mg" cols="5" rows="10" required></textarea>
+                </div>
+                <div id="div_sub">
+                    <input type="submit" value="Envoyer mon message"/>
+                </div>
+            </form>
+            
+        </section>
+    </main>
+    <footer>
+        <div id="footer_links">
+            <p> N°siret:0298304930200949779239</p>
+            <a href="#">Nous contacter</a>
+        </div>
+        <div id="footer_social">
+            <a href="https://twitter.com/?lang=fr"><img class="icon" src="./icons/Social/Logo_of_Twitter.svg.png" alt="logo twitter"/></a>
+            <a href="https://instagram.com/?lang=fr"><img class="icon" src="./icons/Social/Instagram_icon.png" alt="logo twitter"/></a>
+            <a href="https://facebook.com/?lang=fr"><img class="icon" src="./icons/Social/facebook-logo-0.png" alt="logo twitter"/></a>
+        </div>
+        <div id="footer_icons">
+                <img class="icon" src="./icons/logo-ffn.jpg" alt="logo FFN"/>
+                <img class="icon" src="./icons/Ffss.svg.png" alt="logo FFSS"/>
+                <img class="icon" src="./icons/beWebBlancWeb.png" alt="logo FFSS"/>
+        </div>
+    </footer> 
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+body{
+    background: linear-gradient(var(--mainColor), var(--navColor))
+}
+#chrono{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid black 1px;
+    background-color:darkcyan;
+    width: 30%;
+    margin: auto;
+    margin-top: 2rem;
+}
+#chrono h1{
+    text-align: center;
+    vertical-align: center;
+    background-color: cadetblue;
+    max-width: 50%;
+    margin: auto;
+}
+
+#chrono_buttons{
+    display: flex;
+    margin: 1rem 0 1rem 0;
+    justify-content: center;
+}
+section{
+    display: flex;
+}
+
+article{
+    margin-top: 2rem;
+    background-color: rgba(20, 115, 216, 1);
+    width: 60%;
+    margin-right: 2rem;
+}
+
+#keep{
+    display: none;
+    width: 40%;
+    margin: auto;
+}
+option:hover{
+    background-color: aqua;
+}

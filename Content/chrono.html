@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../Styles/style.css" rel="stylesheet">
+    <link href="../Styles/style_chrono.css" rel="stylesheet">
+    <script src="../js/athletes.js" defer></script>
+    <script src="../js/chronometre.js" defer></script>
+    <title>Swim'Chronos - Chrono</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html"><img class="icon_nav" src="../icons/house-solid.svg" title="home"/></a>
+            <a href="../Content/chrono.html"><img class="icon_nav" src="../icons/stopwatch-solid.svg" title="Chronos"/></a>
+            <a href="#"><img class="icon_nav" src="../icons/calendar-days-regular.svg" title="Agenda"/></a>
+            <a href="#infos"><img class="icon_nav" src="../icons/envelope-solid.svg" title="Nous contacter"/></a>
+            <a href="#"><img class="icon_nav" src="../icons/database-solid.svg" title="Gestion Athlètes"/></a>
+            <a href="#"><img class="icon_nav" src="../icons/user-solid.svg" title="Login"/></a>
+        </nav>
+        <h1>Swim'Chronos</h1>  
+    </header>
+    <section>
+        <div id="chrono">
+            <h1><time>00:00.00</time></h1>
+            <div id="chrono_buttons">
+                <button id="start">start</button>
+                <button id="stop">stop</button>
+                <button id="reset">reset</button>
+                <button id="lap">lap</button>
+            </div>
+            <button id="keep">Keep Aside</button>
+        </div> 
+        <article>
+            <div>
+                <label for="athl_select">Choisissez votre athlète</label>
+                <select name="athl_select" id="athl_select">
+                    <option value="">---choisissez votre athlète</option>
+                    
+                </select>
+                <div>
+                    <table id="datas_athl">
+                    
+                    </table>
+                </div>
+                <h5>Temps Lapped</h5>
+                <table id="list_laps">
+                    
+                </table>
+                <button id="clear">Clear</button>
+                <button id="save">Save</button>
+            </div>
+            
+        </article>
+    </section> 
+</body>
+</html>

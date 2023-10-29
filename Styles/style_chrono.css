@@ -43,3 +43,8 @@ article{
 option:hover{
     background-color: aqua;
 }
+
+#datas_athl{
+    display: flex;
+    flex-direction: column;
+}

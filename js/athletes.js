@@ -28,15 +28,15 @@ class comp{
 class tests{
     
     constructor(name, dist_test, times){
-    this._name = name;
+    this._name_test = name;
     this._dist_test = dist_test;
     this._list_times = [];
     this._times = this._list_times.push(times); // // list of object times
     }
 }
 class times{
-    constructor(name_test, array){
-        this._name_test = name_test;
+    constructor(name_time, array){
+        this._name_time = name_time;
         this._array = array;
     }
 }
@@ -54,7 +54,7 @@ const Luz = new athlete("Luz", "Junior", chp_france);
 const Nanou = new athlete("Nanou", "Cadette", chp_france);
 chp_france.tests = mannequin_palme;
 Luz._my_compets.push(chp_region);
-
+console.log(Luz)
 
 ///--------------------- Managment of Select Option--------------------------
 
@@ -71,29 +71,60 @@ for(i=0; i < list_athl.length; i++){
 }
 
 // -----------------Display Selected Athlete's times------------------------
-let myAthl_data = document.getElementById('datas_athl');  // get the table with datas_athl's id
+let myAthlDataSection = document.getElementById('datas_athl');  // get the section with datas_athl's id
 let myAthl_option = document.getElementsByClassName('athl_option'); // get the value option list of the select button
-
-
 
     mySelect_athl.addEventListener("change", () => {
         rm_elmt("td");
         rm_elmt("tr");
-        let n = 0;
+        
+        let n = 0; // var for retrieve the selected athlete
         for(i=0; i < list_athl.length; i++){  // search the index with de same value as the Select button
             if(mySelect_athl.value == list_athl[i]._name){
                 n = i; // index that correspond at the object we would find
+                
             }
         }
 
-        for(i=0; i > list_athl[n]._my_compets.length; i++){
+        //--- create table for any comp
+        // loop for display a div with the title and list of test of the competion
+        for(i=0; i < list_athl[n]._my_compets.length; i++){
+            
+            let divComp = document.createElement('div');
+            let tableData = document.createElement('table');
             let row = document.createElement('tr'); // create row for display data
-            for(j=0; j < list_athl[n]._my_compets[i]._list_tests.length; j++){ 
-                let col = document.createElement('td'); // create cell for display compet name
-                col.textContent = list_athl[n]._my_compets[j]._compet_name;
-                row.appendChild(col);
+            let myTh = document.createElement('th'); // create cell for display compet name
+            let myTitleComp = document.createElement('h2'); // title for the div od data
+            let divTest = document.createElement('div'); // for div each tests
+            let titleTest = document.createElement('h3'); // title of tests in div
+            titleTest.style.textAlign = "center"
+            
+            divComp.appendChild(myTitleComp); // attch title to the div
+            divComp.appendChild(divTest); 
+            
+
+            // add textint the title
+            myTitleComp.innerText = list_athl[n]._name+ " - " + list_athl[n]._my_compets[i]._compet_name;                                
+            // loop for display list test
+            let currentComp = list_athl[n]._my_compets[i];
+            
+            for(j=0; j < currentComp._list_tests.length; j++){
+                console.log(currentComp._list_tests[j])
+                titleTest.innerText = currentComp._list_tests[j]._name_test;
+                divTest.appendChild(titleTest);
+
+                let currentTest = currentComp._list_tests[j]
+                for(r= 0; r < currentTest._list_times.length; r++){
+                    let row = document.createElement('tr');
+                    tableData.appendChild(row)
+                    let titleTime = document.createElement('td');
+                    titleTime.innerText = currentTest._list_times[r]._name_time;
+                    row.appendChild(titleTime);
+
+                }
             }
-        myAthl_data.appendChild(row)
+            divTest.appendChild(tableData); //attach table to the divTest
+            myAthlDataSection.appendChild(divComp)
         }
     });
 

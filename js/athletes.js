@@ -35,15 +35,15 @@ class tests{
     }
 }
 class times{
-    constructor(name_time, array){
+    constructor(name_time, laps){
         this._name_time = name_time;
-        this._array = array;
+        this._laps = laps
     }
 }
 
 let list_athl = [];
 
-//-------initialize for testing--------------------------------
+//-------------------------initialize for testing--------------------------------
 
 const serie = new times("serie", []);
 const mannequin = new tests("mannequin", 50, serie);
@@ -54,10 +54,11 @@ const Luz = new athlete("Luz", "Junior", chp_france);
 const Nanou = new athlete("Nanou", "Cadette", chp_france);
 chp_france.tests = mannequin_palme;
 Luz._my_compets.push(chp_region);
-console.log(Luz)
+let testTimes = ["00:14.00","00:21.00","00:25.00"];
+Luz._my_compets[0]._list_tests[0]._list_times[0]._laps = testTimes;
+console.log(Nanou);
 
 ///--------------------- Managment of Select Option--------------------------
-
 let mySelect_athl = document.getElementsByName('athl_select')[0];
 
 
@@ -77,14 +78,31 @@ let myAthl_option = document.getElementsByClassName('athl_option'); // get the v
     mySelect_athl.addEventListener("change", () => {
         rm_elmt("td");
         rm_elmt("tr");
+        rm_elmt("h2");
+        rm_elmt("h3");
         
-        let n = 0; // var for retrieve the selected athlete
-        for(i=0; i < list_athl.length; i++){  // search the index with de same value as the Select button
-            if(mySelect_athl.value == list_athl[i]._name){
-                n = i; // index that correspond at the object we would find
-                
+        searchAthl(mySelect_athl, list_athl)
+       
+    });
+
+    // -----------------function for selected athlete's times management------------------
+
+
+    // function for retrieve selected index
+
+    function retrieveIndexAthl(selectVal, datas){
+        let x = 0;
+        for(i=0; i < datas.length; i++){  // search the index with de same value as the Select button
+            if(selectVal.value == datas[i]._name){
+                x = i; // index that correspond at the object we would find
             }
         }
+        return x;
+    }
+
+    function searchAthl(mySelect_athl, list_athl){
+        let n = 0;
+        n = retrieveIndexAthl(mySelect_athl, list_athl); // var of the selected athlete
 
         //--- create table for any comp
         // loop for display a div with the title and list of test of the competion
@@ -92,12 +110,11 @@ let myAthl_option = document.getElementsByClassName('athl_option'); // get the v
             
             let divComp = document.createElement('div');
             let tableData = document.createElement('table');
-            let row = document.createElement('tr'); // create row for display data
-            let myTh = document.createElement('th'); // create cell for display compet name
+            tableData.style.width = "100%";
             let myTitleComp = document.createElement('h2'); // title for the div od data
             let divTest = document.createElement('div'); // for div each tests
             let titleTest = document.createElement('h3'); // title of tests in div
-            titleTest.style.textAlign = "center"
+            titleTest.style.textAlign = "center";
             
             divComp.appendChild(myTitleComp); // attch title to the div
             divComp.appendChild(divTest); 
@@ -106,26 +123,66 @@ let myAthl_option = document.getElementsByClassName('athl_option'); // get the v
             // add textint the title
             myTitleComp.innerText = list_athl[n]._name+ " - " + list_athl[n]._my_compets[i]._compet_name;                                
             // loop for display list test
-            let currentComp = list_athl[n]._my_compets[i];
-            
-            for(j=0; j < currentComp._list_tests.length; j++){
-                console.log(currentComp._list_tests[j])
-                titleTest.innerText = currentComp._list_tests[j]._name_test;
-                divTest.appendChild(titleTest);
 
-                let currentTest = currentComp._list_tests[j]
-                for(r= 0; r < currentTest._list_times.length; r++){
-                    let row = document.createElement('tr');
-                    tableData.appendChild(row)
-                    let titleTime = document.createElement('td');
-                    titleTime.innerText = currentTest._list_times[r]._name_time;
-                    row.appendChild(titleTime);
-
-                }
-            }
+            displayComp(list_athl[n]._my_compets[i], divTest, titleTest, tableData);
+          
             divTest.appendChild(tableData); //attach table to the divTest
             myAthlDataSection.appendChild(divComp)
         }
-    });
+
+    }
+    function displayComp(currentComp, divTest, titleTest, tableData){
+        for(j=0; j < currentComp._list_tests.length; j++){
+            titleTest.innerText = currentComp._list_tests[j]._name_test;
+
+            divTest.appendChild(titleTest);
+            
+           
+            displayTest(currentComp._list_tests[j], tableData)
+          
+        }
+    }
 
 
+    function displayTest(currentTest, tableData){
+        for(r= 0; r < currentTest._list_times.length; r++){
+            let row = document.createElement('tr'); // one time (title | lap | lap | lap | lap etc...)
+            row.style.display = "flex";
+            row.style.flexDirection = "space between";
+            tableData.appendChild(row)
+            let titleTime = document.createElement('td');
+            titleTime.innerText = currentTest._list_times[r]._name_time;
+            row.appendChild(titleTime);
+
+            
+            
+            displayTime(currentTest._list_times[r], row);
+        }
+    }
+
+    
+
+    function displayTime(currentTime, row){ //loop for display lap on each time;
+        for(l=0; l < currentTime._laps.length; l++){
+            let lap = document.createElement('td');
+            lap.textContent = currentTime._laps[l];
+            lap.style.margin = "0 1rem 0 1rem";
+            lap.style.backgroundColor = "--"
+            row.appendChild(lap);
+        }
+    }
+
+    //--------------------------JSON athlete----------------------
+
+    let luzJSON = JSON.stringify(Luz)
+    console.log(luzJSON)
+
+    ;
+
+    let pullURL = "\\wsl.localhost\kali-linux\home\yverdier\BeWeb\FileRouge\datas\athlete.json"
+
+    let request = new XMLHttpRequest();
+    request.open("GET", pullURL);
+    // request.open()
+    // request.send(luzJSON)
+    request.send(luzJSON);
